@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo-backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: bchepngeno1/backend:2.1.0
+        resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+        ports:
+            - containerPort: 5000
+        env:
+           - name: MONGO_URI
+             valueFrom:
+               secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_URI
+     #   volumeMounts:
+      #  - name: backend-storage
+       #   mountPath: /app/data
+     # volumes:
+      #  - name: backend-storage
+      #    emptyDir: {}
