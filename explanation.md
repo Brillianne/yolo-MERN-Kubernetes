@@ -49,8 +49,10 @@ So that you can be able to access the service you will need to port forward for 
 
 For backend use below command
 
-kubectl port-forward service/yolo-backend-service 5050:5050 For client to be able to access the client service in your browser
+## kubectl port-forward service/yolo-backend-service 5050:5050 
 
-kubectl port-forward service/client-service 3000:3000
+For client to be able to access the client service in your browser
+
+## kubectl port-forward service/client-service 3000:3000
 
 Challenge dependency issues for client app, Yolo app was build with a previos version of react that may not support env variables 
