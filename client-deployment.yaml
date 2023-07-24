@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo-client-deployment
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: frontend-client
+        image: bchepngeno1/client:2.1.0
+        tty: true
+        ports:
+        - containerPort: 3000
+        env:
+        - name: baseurl
+          valueFrom:
+            configMapKeyRef:
+              name: client-configmap
+              key: baseurl
