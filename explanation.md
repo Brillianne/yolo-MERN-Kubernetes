@@ -7,7 +7,7 @@ I created a StatefulSet for mongo container together with a persistent volume.St
 
 ## Method used to expose your pods to internet traffic.
 
-o expose your pods to internet traffic in Kubernetes, I used services to expose the pods with method below for my client container
+To expose your pods to internet traffic in Kubernetes, I used services to expose the pods with method below for my client container
 
 NodePort:
 
